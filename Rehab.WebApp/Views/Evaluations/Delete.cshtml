@@ -1,0 +1,224 @@
+﻿@model RehabCenter.Models.Evaluation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Evaluation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EvalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EvalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PacientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PacientID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TreatmentEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TreatmentEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TherapistName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TherapistName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSingned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSingned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorizationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorizationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneralNotes1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneralNotes1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneralNotes2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneralNotes2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneralNotes3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneralNotes3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneralNotes4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneralNotes4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goals1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goals1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goals2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goals2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goals3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goals3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goals4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goals4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongTermGoals1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongTermGoals1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongTermGoals2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongTermGoals2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recomendations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recomendations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diagnosis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diagnosis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestAdministerd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestAdministerd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotorDevelop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotorDevelop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assesment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assesment)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

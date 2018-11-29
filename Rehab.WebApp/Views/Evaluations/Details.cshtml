@@ -1,0 +1,197 @@
+﻿@model RehabCenter.Models.Evaluation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Evaluation</h4>
+    <hr />
+   
+    <div class="row margingButton">
+        <div class="col-sm-3">
+            @Html.LabelFor(model => model.EvalDate)
+        </div>
+        <div class="col-md-10">
+           @Html.DisplayFor(model => model.EvalDate)
+        </div>
+    </div>
+    <div class="row margingButton">
+        <div class="col-sm-3">
+            @Html.LabelFor(model => model.TreatmentCode)
+        </div>
+        <div class="col-md-10">
+           @Html.DisplayFor(model => model.TreatmentCode)
+        </div>
+    </div>
+
+
+    <div class="row margingButton">
+        <div class="col-sm-3">
+            @Html.LabelFor(model => model.TreatmentStart)
+        </div>
+        <div class="col-sm-4">
+            @Html.DisplayFor(model => model.TreatmentPeriod())
+        </div>
+    </div>
+
+    @Html.LabelFor(model => model.GeneralNotes1)
+    <div class="row margingButton">
+        <div class="col-sm-6">
+            @Html.DisplayFor(model => model.GeneralNotes1 )
+        </div>
+        <div class="col-sm-6">
+            @Html.DisplayFor(model => model.GeneralNotes2)
+        </div>
+    </div>
+    <div class="row margingButton">
+        <div class="col-sm-6">
+            @Html.DisplayFor(model => model.GeneralNotes3)
+        </div>
+        <div class="col-sm-6">
+            @Html.DisplayFor(model => model.GeneralNotes4)
+        </div>
+    </div>
+
+    @Html.LabelFor(model => model.Goals1)
+    <div class="row margingButton">
+        <div class="col-sm-6">
+            @Html.DisplayFor(model => model.Goals1)
+        </div>
+        <div class="col-sm-6 margingButton">
+            @Html.DisplayFor(model => model.Goals2)
+        </div>
+    </div>
+    <div class="row margingButton">
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.Goals3)
+        </div>
+        <div class="col-md-6">
+            @Html.DisplayFor(model => model.Goals4)
+        </div>
+    </div>
+
+    @Html.LabelFor(model => model.LongTermGoals1)
+    <div class="row margingButton">
+        <div class="col-md-12">
+            @Html.DisplayFor(model => model.LongTermGoals1)
+        </div>
+    </div>
+    <div class="row margingButton">
+        <div class="col-md-12">
+            @Html.DisplayFor(model => model.LongTermGoals2)
+        </div>
+    </div>
+
+
+    @*foreach (var item in Model.TherapyMethods)
+         {
+         <div class="checkbox">
+            <label>
+                 <input type="checkbox"
+                        name="TherapyMethods"
+                        value="@item" />
+            </label>
+        </div>
+        }*@
+
+
+
+
+
+
+    @Html.LabelFor(model => model.Recomendations)
+    <div class="row margingButton">
+        <div class="col-md-12">
+            @Html.DisplayFor(model => model.Recomendations)
+        </div>
+    </div>
+
+    @Html.LabelFor(model => model.Diagnosis)
+    <div class="row margingButton">
+        <div class="col-md-12">
+            @Html.DisplayFor(model => model.Diagnosis)
+        </div>
+    </div>
+
+    @Html.LabelFor(model => model.TestAdministerd)
+    <div class="row margingButton">
+        <div class="col-md-12">
+            @Html.DisplayFor(model => model.TestAdministerd)
+        </div>
+    </div>
+
+    @Html.LabelFor(model => model.MotorDevelop)
+    <div class="row margingButton">
+        <div class="col-md-12">
+            @Html.DisplayFor(model => model.MotorDevelop)
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Assesment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Assesment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Assesment, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TherapistName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.TherapistName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProviderNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.ProviderNumber)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PhysicianName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.PhysicianName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateSingned, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.DateSingned)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AuthorizationNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+           @Html.DisplayFor(model => model.AuthorizationNumber)
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EvaluationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

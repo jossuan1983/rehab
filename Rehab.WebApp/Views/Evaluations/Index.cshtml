@@ -1,0 +1,167 @@
+﻿@model IEnumerable<RehabCenter.Models.Evaluation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Evaluations for </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EvalDate)
+        </th>
+         <th>
+            @Html.DisplayNameFor(model => model.TreatmentCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TreatmentStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TherapistName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProviderNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhysicianName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateSingned)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.AuthorizationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneralNotes1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneralNotes2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneralNotes3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneralNotes4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Goals1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Goals2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Goals3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Goals4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongTermGoals1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongTermGoals2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recomendations)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diagnosis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestAdministerd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotorDevelop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assesment)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EvalDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreatmentCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TreatmentPeriod()) 
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TherapistName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProviderNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhysicianName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateSingned)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.AuthorizationNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GeneralNotes1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GeneralNotes2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GeneralNotes3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GeneralNotes4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goals1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goals2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goals3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goals4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LongTermGoals1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LongTermGoals2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recomendations)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagnosis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestAdministerd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotorDevelop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assesment)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EvaluationID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EvaluationID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EvaluationID })
+        </td>
+    </tr>
+}
+
+</table>
