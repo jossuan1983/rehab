@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rehab.WebApp", "Rehab.WebApp\Rehab.WebApp.csproj", "{29E8A274-484A-41D4-9BA0-BF2FB7CA0E34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rehab.WebApp.Tests", "Rehab.WebApp.Tests\Rehab.WebApp.Tests.csproj", "{B7ACC6CE-D6C4-47AC-9199-DEBDA56AA35B}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Rehab.Database", "Rehab.Database\Rehab.Database.sqlproj", "{B3263290-BB7C-4395-8E0A-FDA7FF68E4E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rehab.Repositories", "Rehab.Repositories\Rehab.Repositories.csproj", "{A5AC4F2D-8347-4F64-8358-BF3DD28008ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rehab.Models", "Rehab.Models\Rehab.Models.csproj", "{9E51D371-9EC0-4186-B5E2-3DC3B178E2CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rehab.Helpers", "Rehab.Helpers\Rehab.Helpers.csproj", "{5C89E9AE-9DF4-41C4-9279-CCA36DDE7A5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29E8A274-484A-41D4-9BA0-BF2FB7CA0E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29E8A274-484A-41D4-9BA0-BF2FB7CA0E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29E8A274-484A-41D4-9BA0-BF2FB7CA0E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29E8A274-484A-41D4-9BA0-BF2FB7CA0E34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7ACC6CE-D6C4-47AC-9199-DEBDA56AA35B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7ACC6CE-D6C4-47AC-9199-DEBDA56AA35B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7ACC6CE-D6C4-47AC-9199-DEBDA56AA35B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7ACC6CE-D6C4-47AC-9199-DEBDA56AA35B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3263290-BB7C-4395-8E0A-FDA7FF68E4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3263290-BB7C-4395-8E0A-FDA7FF68E4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3263290-BB7C-4395-8E0A-FDA7FF68E4E8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B3263290-BB7C-4395-8E0A-FDA7FF68E4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3263290-BB7C-4395-8E0A-FDA7FF68E4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3263290-BB7C-4395-8E0A-FDA7FF68E4E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A5AC4F2D-8347-4F64-8358-BF3DD28008ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5AC4F2D-8347-4F64-8358-BF3DD28008ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5AC4F2D-8347-4F64-8358-BF3DD28008ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5AC4F2D-8347-4F64-8358-BF3DD28008ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E51D371-9EC0-4186-B5E2-3DC3B178E2CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E51D371-9EC0-4186-B5E2-3DC3B178E2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E51D371-9EC0-4186-B5E2-3DC3B178E2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E51D371-9EC0-4186-B5E2-3DC3B178E2CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C89E9AE-9DF4-41C4-9279-CCA36DDE7A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C89E9AE-9DF4-41C4-9279-CCA36DDE7A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C89E9AE-9DF4-41C4-9279-CCA36DDE7A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C89E9AE-9DF4-41C4-9279-CCA36DDE7A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC4787E2-6C8F-4D3D-AAAB-BC180DE06898}
+	EndGlobalSection
+EndGlobal
