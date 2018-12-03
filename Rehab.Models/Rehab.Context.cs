@@ -20,12 +20,15 @@ namespace Rehab.Models
         {
         }
     
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
-    }
+    	
+    	protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+    		modelBuilder.Entity<Contact>().Map(m => m.Requires("IsDeleted").HasValue(false));
+    		modelBuilder.Entity<Patient>().Map(m => m.Requires("IsDeleted").HasValue(false));
+        }
+    
+    }	
+    
 }

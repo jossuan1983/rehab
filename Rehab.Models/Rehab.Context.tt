@@ -80,11 +80,6 @@ foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
 #>
     }
 
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    {
-        throw new UnintentionalCodeFirstException();
-    }
-
 <#
     foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
     {
@@ -98,7 +93,21 @@ foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
         WriteFunctionImport(typeMapper, codeStringGenerator, edmFunction, modelNamespace, includeMergeOption: false);
     }
 #>
+	
+	protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+<#
+foreach (var entitySet in container.BaseEntitySets.OfType<EntitySet>())
+{
+#>
+		modelBuilder.Entity<<#=typeMapper.GetTypeName(entitySet.ElementType)#>>().Map(m => m.Requires("IsDeleted").HasValue(false));
+<#
 }
+#>
+    }
+
+}	
+
 <#
 
 if (!String.IsNullOrEmpty(codeNamespace))

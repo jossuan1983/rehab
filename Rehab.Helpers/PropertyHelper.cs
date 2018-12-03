@@ -9,13 +9,17 @@ namespace Rehab.Helpers
     public class PropertyHelper<TSource, TDest> where TSource : class
                                             where TDest : class
     {
-        public static void Copy(TSource src, TDest dest)
+        public static void Copy(TSource src, TDest dest, params string [] ignores)
         {
             var parentProperties = src.GetType().GetProperties();
             var childProperties = dest.GetType().GetProperties();
 
             foreach (var parentProperty in parentProperties)
             {
+                if(ignores.Contains(parentProperty.Name))
+                {
+                    continue;
+                }
                 foreach (var childProperty in childProperties)
                 {
                     if (parentProperty.Name == childProperty.Name && parentProperty.PropertyType == childProperty.PropertyType)

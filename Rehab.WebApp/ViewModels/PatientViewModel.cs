@@ -12,8 +12,10 @@ namespace Rehab.WebApp.ViewModels
 
         public string LastName { get; set; }
 
+        public string SSN { get; set; }
+
         [DataType(DataType.Date)]
-        public DateTime? DOB { get; set; }
+        public DateTime DOB { get; set; }
 
         public string Address { get; set; }
 

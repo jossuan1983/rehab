@@ -17,6 +17,7 @@ namespace Rehab.WebApp
                 config.CreateMap<Patient, PatientViewModel>()
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.Contact.FirstName))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.Contact.LastName))
+                .ForMember(dest => dest.SSN, opt => opt.MapFrom(src => src.Contact.SSN))
                 .ForMember(dest => dest.DOB, opt => opt.MapFrom(src => src.Contact.DOB))
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Contact.Address))
                 .ReverseMap();

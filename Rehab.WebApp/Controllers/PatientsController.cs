@@ -78,7 +78,7 @@ namespace Rehab.WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FirstName,LastName,DOB,TeachersName,Insurance,InsuranceType")] PatientViewModel patient)
+        public ActionResult Create([Bind(Include = "FirstName,LastName,DOB,Insurance,Address,SSN")] PatientViewModel patient)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace Rehab.WebApp.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException)
+            catch (DataException e)
             {
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
@@ -112,7 +112,7 @@ namespace Rehab.WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,DOB,Insurance,Address")] PatientViewModel patient)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,DOB,Insurance,Address,SSN")] PatientViewModel patient)
         {
             if (ModelState.IsValid)
             {
@@ -120,12 +120,12 @@ namespace Rehab.WebApp.Controllers
                 {
                     var model = _unitOfWork.PatientRepository.Get(patient.Id);
                     model.Insurance = patient.Insurance;
-                    PropertyHelper<PatientViewModel, Contact>.Copy(patient, model.Contact);
+                    PropertyHelper<PatientViewModel, Contact>.Copy(patient, model.Contact, "Id");
                     _unitOfWork.PatientRepository.Update(model);
                     _unitOfWork.Save();
                     return RedirectToAction("Index");
                 }
-                catch (DataException)
+                catch (DataException e)
                 {
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
                 }

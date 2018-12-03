@@ -10,21 +10,27 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="DOB" Type="date" />
+          <Property Name="SSN" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
           <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Created" Type="date" />
+          <Property Name="Modified" Type="date" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactId" Type="int" Nullable="false" />
           <Property Name="Insurance" Type="nvarchar(max)" />
-          <Property Name="ContactId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Modified" Type="datetime" />
         </EntityType>
         <Association Name="FK_Patient_Contact">
-          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
           <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contact">
@@ -60,10 +66,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="SSN" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="0" />
+          <Property Name="Modified" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Patients" Relationship="RehabModel.FK_Patient_Contact" FromRole="Contact" ToRole="Patient" />
         </EntityType>
         <EntityType Name="Patient">
@@ -71,12 +80,15 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Insurance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ContactId" Type="Int32" />
+          <Property Name="ContactId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Contact" Relationship="RehabModel.FK_Patient_Contact" FromRole="Patient" ToRole="Contact" />
+          <Property Name="Insurance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Patient_Contact">
-          <End Type="RehabModel.Contact" Role="Contact" Multiplicity="0..1" />
+          <End Type="RehabModel.Contact" Role="Contact" Multiplicity="1" />
           <End Type="RehabModel.Patient" Role="Patient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contact">
@@ -96,10 +108,13 @@
           <EntitySetMapping Name="Contacts">
             <EntityTypeMapping TypeName="RehabModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -107,8 +122,11 @@
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="RehabModel.Patient">
               <MappingFragment StoreEntitySet="Patient">
-                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
                 <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

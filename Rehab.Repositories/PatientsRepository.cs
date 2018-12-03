@@ -17,11 +17,13 @@ namespace Rehab.Repositories
             if (String.IsNullOrEmpty(searchString))
             {
                 return from p in RehabContext.Patients
-                           select p;
+                       where !p.IsDeleted
+                       select p;
             }
             return from p in RehabContext.Patients
-                       where p.Contact.LastName.Contains(searchString) || 
-                       p.Contact.FirstName.Contains(searchString)
+                       where !p.IsDeleted && 
+                       (p.Contact.LastName.Contains(searchString) || 
+                       p.Contact.FirstName.Contains(searchString))
                        select p;
         }
     }

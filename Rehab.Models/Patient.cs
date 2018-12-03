@@ -15,8 +15,11 @@ namespace Rehab.Models
     public partial class Patient
     {
         public int Id { get; set; }
+        public int ContactId { get; set; }
+        public bool IsDeleted { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
+        public Nullable<System.DateTime> Modified { get; set; }
         public string Insurance { get; set; }
-        public Nullable<int> ContactId { get; set; }
     
         public virtual Contact Contact { get; set; }
     }
