@@ -14,6 +14,12 @@ namespace Rehab.Models
     
     public partial class Patient
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Patient()
+        {
+            this.Evaluations = new HashSet<Evaluation>();
+        }
+    
         public int Id { get; set; }
         public int ContactId { get; set; }
         public bool IsDeleted { get; set; }
@@ -22,5 +28,7 @@ namespace Rehab.Models
         public string Insurance { get; set; }
     
         public virtual Contact Contact { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Evaluation> Evaluations { get; set; }
     }
 }

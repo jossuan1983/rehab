@@ -4,9 +4,9 @@ using System.Data.Entity;
 
 namespace Rehab.Repositories
 {
-    public abstract class RehabRepository<TEntity> : Repository <TEntity> where TEntity : class
+    public abstract class ContextBaseRepository<TEntity> : Repository <TEntity> where TEntity : class
     {
-        public RehabRepository(RehabEntities context) : base(context)
+        public ContextBaseRepository(RehabEntities context) : base(context)
         {
         }
 

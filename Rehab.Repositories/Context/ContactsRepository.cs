@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Rehab.Repositories
 {
-    public class ContactsRepository : RehabRepository<Contact>, IContactsRepository
+    public class ContactsRepository : ContextBaseRepository<Contact>, IContactsRepository
     {
         public ContactsRepository(RehabEntities db):base(db)
         { }

@@ -6,10 +6,10 @@ using System.Linq;
 
 namespace Rehab.Repositories
 {
-    public class PatientRepository : RehabRepository<Patient>, IPatientRepository
+    public class PatientsRepository : ContextBaseRepository<Patient>, IPatientsRepository
     { 
 
-        public PatientRepository(RehabEntities db):base(db)
+        public PatientsRepository(RehabEntities db):base(db)
         { }
         
         public IEnumerable<Patient> Search(string searchString)

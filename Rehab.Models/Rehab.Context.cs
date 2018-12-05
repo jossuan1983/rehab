@@ -22,11 +22,13 @@ namespace Rehab.Models
     
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<Evaluation> Evaluations { get; set; }
     	
     	protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
     		modelBuilder.Entity<Contact>().Map(m => m.Requires("IsDeleted").HasValue(false));
     		modelBuilder.Entity<Patient>().Map(m => m.Requires("IsDeleted").HasValue(false));
+    		modelBuilder.Entity<Evaluation>().Map(m => m.Requires("IsDeleted").HasValue(false));
         }
     
     }	

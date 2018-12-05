@@ -18,6 +18,29 @@
           <Property Name="Created" Type="date" />
           <Property Name="Modified" Type="date" />
         </EntityType>
+        <EntityType Name="Evaluation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TreatmentCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="TreatmentStart" Type="date" />
+          <Property Name="TreatmentEnd" Type="date" />
+          <Property Name="History" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Development" Type="nvarchar" MaxLength="4000" />
+          <Property Name="TherapistName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProviderNumber" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhysicianName" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateSingned" Type="date" />
+          <Property Name="AuthorizationNumber" Type="nvarchar" MaxLength="500" />
+          <Property Name="Recomendations" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="date" Nullable="false" />
+          <Property Name="Modified" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="Patient">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,6 +52,18 @@
           <Property Name="Created" Type="datetime" />
           <Property Name="Modified" Type="datetime" />
         </EntityType>
+        <Association Name="FK_Evaluation_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Evaluation" Type="Self.Evaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluation">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Patient_Contact">
           <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
           <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
@@ -43,7 +78,12 @@
         </Association>
         <EntityContainer Name="RehabModelStoreContainer">
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evaluation" EntityType="Self.Evaluation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Evaluation_Patient" Association="Self.FK_Evaluation_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Evaluation" EntitySet="Evaluation" />
+          </AssociationSet>
           <AssociationSet Name="FK_Patient_Contact" Association="Self.FK_Patient_Contact">
             <End Role="Contact" EntitySet="Contact" />
             <End Role="Patient" EntitySet="Patient" />
@@ -59,6 +99,11 @@
           <AssociationSet Name="FK_Patient_Contact" Association="RehabModel.FK_Patient_Contact">
             <End Role="Contact" EntitySet="Contacts" />
             <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <EntitySet Name="Evaluations" EntityType="RehabModel.Evaluation" />
+          <AssociationSet Name="FK_Evaluation_Patient" Association="RehabModel.FK_Evaluation_Patient">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Evaluation" EntitySet="Evaluations" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Contact">
@@ -86,6 +131,7 @@
           <Property Name="Modified" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Contact" Relationship="RehabModel.FK_Patient_Contact" FromRole="Patient" ToRole="Contact" />
           <Property Name="Insurance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Evaluations" Relationship="RehabModel.FK_Evaluation_Patient" FromRole="Patient" ToRole="Evaluation" />
         </EntityType>
         <Association Name="FK_Patient_Contact">
           <End Type="RehabModel.Contact" Role="Contact" Multiplicity="1" />
@@ -96,6 +142,42 @@
             </Principal>
             <Dependent Role="Patient">
               <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Evaluation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TreatmentCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TreatmentStart" Type="DateTime" Precision="0" />
+          <Property Name="TreatmentEnd" Type="DateTime" Precision="0" />
+          <Property Name="History" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Development" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TherapistName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhysicianName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateSingned" Type="DateTime" Precision="0" />
+          <Property Name="AuthorizationNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Recomendations" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Patient" Relationship="RehabModel.FK_Evaluation_Patient" FromRole="Evaluation" ToRole="Patient" />
+        </EntityType>
+        <Association Name="FK_Evaluation_Patient">
+          <End Type="RehabModel.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="RehabModel.Evaluation" Role="Evaluation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluation">
+              <PropertyRef Name="PatientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -127,6 +209,30 @@
                 <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evaluations">
+            <EntityTypeMapping TypeName="RehabModel.Evaluation">
+              <MappingFragment StoreEntitySet="Evaluation">
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Recomendations" ColumnName="Recomendations" />
+                <ScalarProperty Name="AuthorizationNumber" ColumnName="AuthorizationNumber" />
+                <ScalarProperty Name="DateSingned" ColumnName="DateSingned" />
+                <ScalarProperty Name="PhysicianName" ColumnName="PhysicianName" />
+                <ScalarProperty Name="ProviderNumber" ColumnName="ProviderNumber" />
+                <ScalarProperty Name="TherapistName" ColumnName="TherapistName" />
+                <ScalarProperty Name="Development" ColumnName="Development" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="TreatmentEnd" ColumnName="TreatmentEnd" />
+                <ScalarProperty Name="TreatmentStart" ColumnName="TreatmentStart" />
+                <ScalarProperty Name="TreatmentCode" ColumnName="TreatmentCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -11,29 +11,42 @@ namespace Rehab.Repositories
     {
         protected RehabEntities _context = new RehabEntities();
 
-        protected IPatientRepository _patientRepository;
-        public IPatientRepository PatientRepository
+        protected IEvaluationsRepository _evaluationsRepository;
+        public IEvaluationsRepository EvaluationsRepository
         {
             get
             {
-                if (_patientRepository == null)
+                if (_evaluationsRepository == null)
                 {
-                    _patientRepository = new PatientRepository(_context);
+                    _evaluationsRepository = new EvaluationsRepository(_context);
                 }
-                return _patientRepository;
+                return _evaluationsRepository;
             }
         }
 
-        protected IContactsRepository _contactRepository;
-        public IContactsRepository ContactRepository
+        protected IPatientsRepository _patientsRepository;
+        public IPatientsRepository PatientsRepository
         {
             get
             {
-                if (_contactRepository == null)
+                if (_patientsRepository == null)
                 {
-                    _contactRepository = new ContactsRepository(_context);
+                    _patientsRepository = new PatientsRepository(_context);
                 }
-                return _contactRepository;
+                return _patientsRepository;
+            }
+        }
+
+        protected IContactsRepository _contactsRepository;
+        public IContactsRepository ContactsRepository
+        {
+            get
+            {
+                if (_contactsRepository == null)
+                {
+                    _contactsRepository = new ContactsRepository(_context);
+                }
+                return _contactsRepository;
             }
         }
 

@@ -116,7 +116,12 @@
     <Compile Include="Contact.cs">
       <DependentUpon>Rehab.tt</DependentUpon>
     </Compile>
+    <Compile Include="Custom\Evaluation.cs" />
+    <Compile Include="Custom\Patient.cs" />
     <Compile Include="Custom\RehabEntities.cs" />
+    <Compile Include="Evaluation.cs">
+      <DependentUpon>Rehab.tt</DependentUpon>
+    </Compile>
     <Compile Include="Patient.cs">
       <DependentUpon>Rehab.tt</DependentUpon>
     </Compile>

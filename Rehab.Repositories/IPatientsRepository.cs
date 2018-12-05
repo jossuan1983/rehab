@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Rehab.Repositories
 {
-    public interface IPatientRepository : IRepository<Patient>
+    public interface IPatientsRepository : IRepository<Patient>
     {
         IEnumerable<Patient> Search(string searchString);
     }

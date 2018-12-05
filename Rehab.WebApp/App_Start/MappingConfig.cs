@@ -21,6 +21,8 @@ namespace Rehab.WebApp
                 .ForMember(dest => dest.DOB, opt => opt.MapFrom(src => src.Contact.DOB))
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Contact.Address))
                 .ReverseMap();
+
+                config.CreateMap<Evaluation, EvaluationViewModel>().ReverseMap();
             });
         }
     }

@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace Rehab.WebApp.Controllers
 {
-    public class PatientsController : Controller
+    public class EvaluationsController : Controller
     {
         UnitOfWork _unitOfWork = new UnitOfWork();
 
@@ -33,28 +33,28 @@ namespace Rehab.WebApp.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var patients = _unitOfWork.PatientsRepository.Search(searchString);
+            var evaluations = _unitOfWork.EvaluationsRepository.Search(searchString);
             
-            switch (sortOrder)
+            /*switch (sortOrder)
             {
                 case "name_desc":
-                    patients = patients.OrderByDescending(s => (s.Contact.LastName));
+                    Evaluations = Evaluations.OrderByDescending(s => (s.Contact.LastName));
                     break;
                 case "DOB":
-                    patients = patients.OrderBy(s => s.Contact.DOB);
+                    Evaluations = Evaluations.OrderBy(s => s.Contact.DOB);
                     break;
                 case "Eval_Date":
-                    //patients = patients.OrderByDescending(s => s.Contact.Evaluations);
+                    //Evaluations = Evaluations.OrderByDescending(s => s.Contact.Evaluations);
                     break;
                 default:
-                    patients = patients.OrderBy(s => s.Contact.LastName);
+                    Evaluations = Evaluations.OrderBy(s => s.Contact.LastName);
                     break;
-            }
+            }*/
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            var patientsToView = AutoMapper.Mapper.Map<IEnumerable<PatientViewModel>>(patients);
-            return View(patientsToView.ToPagedList(pageNumber, pageSize));
+            var EvaluationsToView = AutoMapper.Mapper.Map<IEnumerable<EvaluationViewModel>>(evaluations);
+            return View(EvaluationsToView.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult Details(int? id)
@@ -63,12 +63,12 @@ namespace Rehab.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PatientViewModel patient = _unitOfWork.PatientsRepository.Get(id.Value);
-            if (patient == null)
+            EvaluationViewModel Evaluation = _unitOfWork.EvaluationsRepository.Get(id.Value);
+            if (Evaluation == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(Evaluation);
         }
 
         public ActionResult Create()
@@ -78,13 +78,13 @@ namespace Rehab.WebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FirstName,LastName,DOB,Insurance,Address,SSN")] PatientViewModel patient)
+        public ActionResult Create([Bind(Include = "")] EvaluationViewModel Evaluation)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _unitOfWork.PatientsRepository.Add(patient);
+                    _unitOfWork.EvaluationsRepository.Add(Evaluation);
                     _unitOfWork.Save();
                     return RedirectToAction("Index");
                 }
@@ -93,7 +93,7 @@ namespace Rehab.WebApp.Controllers
             {
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-            return View(patient);
+            return View(Evaluation);
         }
 
         public ActionResult Edit(int? id)
@@ -102,26 +102,23 @@ namespace Rehab.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PatientViewModel patient = _unitOfWork.PatientsRepository.Get(id.Value);
-            if (patient == null)
+            EvaluationViewModel Evaluation = _unitOfWork.EvaluationsRepository.Get(id.Value);
+            if (Evaluation == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(Evaluation);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,DOB,Insurance,Address,SSN")] PatientViewModel patient)
+        public ActionResult Edit([Bind(Include = "Id")] EvaluationViewModel Evaluation)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var model = _unitOfWork.PatientsRepository.Get(patient.Id);
-                    model.Insurance = patient.Insurance;
-                    PropertyHelper<PatientViewModel, Contact>.Copy(patient, model.Contact, "Id");
-                    _unitOfWork.PatientsRepository.Update(model);
+                    _unitOfWork.EvaluationsRepository.Update(Evaluation);
                     _unitOfWork.Save();
                     return RedirectToAction("Index");
                 }
@@ -130,7 +127,7 @@ namespace Rehab.WebApp.Controllers
                     ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
                 }
             }
-            return View(patient);
+            return View(Evaluation);
         }
 
         public ActionResult Delete(int? id, bool? saveChangesError = false)
@@ -143,12 +140,12 @@ namespace Rehab.WebApp.Controllers
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
-            PatientViewModel patient = _unitOfWork.PatientsRepository.Get(id.Value);
-            if (patient == null)
+            EvaluationViewModel Evaluation = _unitOfWork.EvaluationsRepository.Get(id.Value);
+            if (Evaluation == null)
             {
                 return HttpNotFound();
             }
-            return View(patient);
+            return View(Evaluation);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -157,8 +154,8 @@ namespace Rehab.WebApp.Controllers
         {
             try
             {
-                var patient = _unitOfWork.PatientsRepository.Get(id);
-                _unitOfWork.PatientsRepository.Remove(patient);
+                var Evaluation = _unitOfWork.EvaluationsRepository.Get(id);
+                _unitOfWork.EvaluationsRepository.Remove(Evaluation);
                 _unitOfWork.Save();
             }
             catch (DataException)
