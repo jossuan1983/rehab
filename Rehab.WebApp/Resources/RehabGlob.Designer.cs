@@ -106,6 +106,15 @@ namespace Rehab.WebApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patients.
+        /// </summary>
+        public static string Patients {
+            get {
+                return ResourceManager.GetString("Patients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Physician.
         /// </summary>
         public static string PhysicianName {

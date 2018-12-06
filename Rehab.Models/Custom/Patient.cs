@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rehab.Models.Custom
+namespace Rehab.Models
 {
     public partial class Patient
     {

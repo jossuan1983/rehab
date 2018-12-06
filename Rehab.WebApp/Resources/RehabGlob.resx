@@ -132,6 +132,9 @@
   <data name="LastName" xml:space="preserve">
     <value>Last Name</value>
   </data>
+  <data name="Patients" xml:space="preserve">
+    <value>Patients</value>
+  </data>
   <data name="PhysicianName" xml:space="preserve">
     <value>Physician</value>
   </data>
